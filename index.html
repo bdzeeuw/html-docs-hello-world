@@ -50,12 +50,12 @@
 
           //Extracting data
           var name = JSON.parse(request.response).name;
-          var version = JSON.parse(request.response).version;
+          var uuid = JSON.parse(request.response).uuid;
 
           //Creating table
           var table="<table>";
         table+="<tr><td>Name</td><td>Version</td></tr>";
-        table+="<tr><td>"+name+"</td><td>"+version+"</td></tr>";
+        table+="<tr><td>"+name+"</td><td>"+uuid+"</td></tr>";
         table+="</table>";
 
           //Showing the table inside table
