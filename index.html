@@ -44,7 +44,7 @@
     <script>
     $(document).ready(function(){
       $("button").click(function(){
-        $.get("https://kibana.k8s.vestas-poc.demo.sentia.net/api/status", function(data, status){
+        $.get("kibana.k8s.vestas-poc.demo.sentia.net/api/status", function(data, status){
           alert("Data: " + data + "\nStatus: " + status);
         });
       });
