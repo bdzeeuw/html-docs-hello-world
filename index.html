@@ -40,19 +40,35 @@
     </div>
 
     <h2>Retrieve data from Kibana</h2>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-      $("button").click(function(){
-        $.get("kibana.k8s.vestas-poc.demo.sentia.net/api/status", function(data, status){
-          alert("Data: " + data + "\nStatus: " + status);
-        });
-      });
-    });
+      const request = new XMLHttpRequest();
+
+      request.open('GET', 'https://kibana.k8s.vestas-poc.demo.sentia.net/api/status');
+      request.send();
+
+      request.onload = () => {
+        if (request.status === 200) {
+          console.log("Success"); // So extract data from json and create table
+
+          //Extracting data
+          var name = JSON.parse(request.response).value.name;
+          var version = JSON.parse(request.response).value.version;
+
+          //Creating table
+          var table="<table>";
+        table+="<tr><td>Name</td><td>Version</td></tr>";
+        table+="<tr><td>"+name+"</td><td>"+version+"</td></tr>";
+        table+="</table>";
+
+          //Showing the table inside table
+          document.getElementById("mydiv").innerHTML = table;
+        }
+      };
+
+      request.onerror = () => {
+        console.log("error")
+      };
     </script>
-    </head>
-    <body>
-    <button>Send an HTTP GET request to a page and get the result back</button>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
