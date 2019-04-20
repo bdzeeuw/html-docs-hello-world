@@ -39,25 +39,25 @@
       </div>
     </div>
 
+    <h2>Retrieve data from Kibana</h2>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $.get("https://kibana.k8s.vestas-poc.demo.sentia.net/api/status", function(data, status){
+          alert("Data: " + data + "\nStatus: " + status);
+        });
+      });
+    });
+    </script>
+    </head>
+    <body>
+    <button>Send an HTTP GET request to a page and get the result back</button>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
-    <script>
-    async function getData()
-      {
-          //await the response of the fetch call
-         let response = await fetch('https://kibana.vestas-poc.demo.sentia.net/api/status');
-          //proceed once the first promise is resolved.
-         let data = await response.json()
-          //proceed only when the second promise is resolved
-          return data;
-      }
-      //call getData function
-      getData()
-      .then(data => console.log(data));//log the data
-      </script>
   </body>
 </html>
