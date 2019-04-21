@@ -17,6 +17,7 @@
         return $data;
     }
     $returned_content = get_data('https://kibana.k8s.vestas-poc.demo.sentia.net/api/status');
+    echo $returned_content
     ?>
  </body>
 </html>
