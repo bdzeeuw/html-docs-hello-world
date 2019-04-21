@@ -9,6 +9,28 @@
 
     <title>Vestas Proof of Concept</title>
 
+    <script>
+      <!---
+        End user monitoring section
+      -->
+      const request = new XMLHttpRequest();
+      
+      const behavioure_monitor_store = 'https://elasticsearch.k8s.vestas-poc.demo.sentia.net/end_user_hits/_doc'
+      request.open('POST', behavioure_monitor_store);
+      request.setRequestHeader("Content-Type", "application/json");
+      var date = new Date();
+      var user_agent = navigator.userAgent
+  
+      var doc = {
+        "hit": "",
+        "user_agent": ""
+      };    
+      doc["hit"] = date;
+      doc["user_agent"] = user_agent;
+
+      request.send(JSON.stringify(doc));
+
+    </script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
